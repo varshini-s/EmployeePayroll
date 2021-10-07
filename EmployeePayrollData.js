@@ -1,10 +1,12 @@
-class EmployeePayrollData {
+class EmployeePayrollData
+ {
     id;
     salary;
     gender;
     startDate;
 
-    constructor(...params) {
+    constructor(...params) 
+    {
         this.id = params[0];
         this.name = params[1];
         this.salary = params[2];
@@ -15,53 +17,62 @@ class EmployeePayrollData {
 
     //getter and setters
 
-    get id() {
+    get id() 
+    {
         return this._id;
     }
 
-    set id(id) {
+    set id(id) 
+    {
         this._id = id;
     }
-    get name() {
+    get name() 
+    {
         return this._name;
     }
 
-    set name(name) {
+    set name(name) 
+    {
         let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
-        if (nameRegex.test(name)) 
-        {
+        if (nameRegex.test(name)) {
             this._name = name;
         }
-        else
-         {
+        else {
             throw "Name is Incorrect";
         }
     }
 
-    get salary() {
+    get salary() 
+    {
         return this._salary;
     }
 
-    set salary(salary) {
+    set salary(salary) 
+    {
         this._salary = salary;
     }
-    get gender() {
+    get gender() 
+    {
         return this._gender;
     }
 
-    set gender(gender) {
+    set gender(gender) 
+    {
         this._gender = gender;
     }
-    get startDate() {
+    get startDate() 
+    {
         return this._startDate;
     }
 
-    set startDate(startDate) {
+    set startDate(startDate) 
+    {
         this._startDate = startDate;
     }
 
 
-    toString() {
+    toString() 
+    {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const employeeDate = this.startDate == undefined ? "undefined" :
             this.startDate.toLocaleDateString("en-us", options);
@@ -76,7 +87,7 @@ try
     employeePayrollData.name = "John";
     console.log(employeePayrollData.toString());
 
-} 
+}
 catch (e) 
 {
     console.error(e);
