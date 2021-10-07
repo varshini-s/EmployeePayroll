@@ -1,3 +1,10 @@
+const idRegex =RegExp('^[1-9]\\d*$');
+const nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
+const salaryRegex =RegExp('^[1-9]\\d*$');
+const genderRegex = RegExp('^[M|F]$');
+const dateRegex=RegExp('^\\d{4}[/](0[1-9]|1[0-2])[/](0[1-9]|[12][0-9]|3[01])$');
+
+
 class EmployeePayrollData
  {
 
@@ -21,7 +28,6 @@ class EmployeePayrollData
     set id(id) 
     {
         
-        let idRegex =RegExp('^[1-9]\\d*$');
         if (idRegex.test(id))
         {
             this._id = id;
@@ -38,7 +44,6 @@ class EmployeePayrollData
 
     set name(name) 
     {
-        let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
         if (nameRegex.test(name))
         {
             this._name = name;
@@ -56,7 +61,6 @@ class EmployeePayrollData
 
     set salary(salary) 
     {
-        let salaryRegex =RegExp('^[1-9]\\d*$');
         if (salaryRegex.test(salary))
         {
             this._salary = salary;
@@ -73,7 +77,6 @@ class EmployeePayrollData
 
     set gender(gender) 
     {
-        let genderRegex = RegExp('^[M|F]$');
         if (genderRegex.test(gender))
         {
             this._gender = gender;
@@ -90,16 +93,25 @@ class EmployeePayrollData
 
     set startDate(startDate) 
     {
-        var now = new Date();
-        if (!(startDate > now))
+        if(dateRegex.test(startDate))
         {
-            this._startDate = startDate;
+            startDate = new Date(startDate)
+            var now = new Date();
+            if (!(startDate > now)) 
+            {
+                this._startDate = startDate;
 
+            }
+            else 
+            {
+                throw "date cannot be greater than today";
+            }
         }
-        else 
+        else
         {
-            throw "date is Incorrect";
+            throw "date format is invalid"
         }
+        
             
     }
 
@@ -114,12 +126,11 @@ class EmployeePayrollData
     }
 }
 
-
 {
 
     try 
     {
-        let employeePayrollData = new EmployeePayrollData(1, "Mark", 20000, "M", new Date());
+        let employeePayrollData = new EmployeePayrollData(1, "Mark", 20000, "M", "2013/01/16");
         console.log(employeePayrollData.toString());
         employeePayrollData.name = "Jo";
         console.log(employeePayrollData.toString());
