@@ -1,8 +1,8 @@
-const idRegex =RegExp('^[1-9]\\d*$');
-const nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
-const salaryRegex =RegExp('^[1-9]\\d*$');
-const genderRegex = RegExp('^[M|F]$');
-const dateRegex=RegExp('^\\d{4}[/](0[1-9]|1[0-2])[/](0[1-9]|[12][0-9]|3[01])$');
+const ID_PATTERN =RegExp('^[1-9]\\d*$');
+const NAME_PATTERN = RegExp('^[A-Z]{1}[a-z]{3,}$');
+const SALARY_PATTERN =RegExp('^[1-9]\\d*$');
+const GENDER_PATTERN = RegExp('^[M|F]$');
+const DATE_PATTERN=RegExp('^\\d{4}[/](0[1-9]|1[0-2])[/](0[1-9]|[12][0-9]|3[01])$');
 
 
 class EmployeePayrollData
@@ -28,7 +28,7 @@ class EmployeePayrollData
     set id(id) 
     {
         
-        if (idRegex.test(id))
+        if (ID_PATTERN.test(id))
         {
             this._id = id;
         }
@@ -44,7 +44,7 @@ class EmployeePayrollData
 
     set name(name) 
     {
-        if (nameRegex.test(name))
+        if (NAME_PATTERN.test(name))
         {
             this._name = name;
         }
@@ -61,7 +61,7 @@ class EmployeePayrollData
 
     set salary(salary) 
     {
-        if (salaryRegex.test(salary))
+        if (SALARY_PATTERN.test(salary))
         {
             this._salary = salary;
         }
@@ -77,7 +77,7 @@ class EmployeePayrollData
 
     set gender(gender) 
     {
-        if (genderRegex.test(gender))
+        if (GENDER_PATTERN.test(gender))
         {
             this._gender = gender;
         }
@@ -93,7 +93,7 @@ class EmployeePayrollData
 
     set startDate(startDate) 
     {
-        if(dateRegex.test(startDate))
+        if(DATE_PATTERN.test(startDate))
         {
             startDate = new Date(startDate)
             var now = new Date();
