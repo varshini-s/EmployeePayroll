@@ -2,6 +2,7 @@ class EmployeePayrollData
 {
     id;
     salary;
+    name;
     gender;
     startDate;
 
@@ -14,8 +15,18 @@ class EmployeePayrollData
         this.startDate=params[4];
         
     }
-    
+
     //getter and setters
+
+    get id()
+    {
+        return this._id;
+    }
+    
+    set id(id)
+    {
+        this._id=id;
+    }
     get name()
     {
         return this._name;
@@ -25,6 +36,35 @@ class EmployeePayrollData
     {
         this._name=name;
     }
+
+    get salary()
+    {
+        return this._salary;
+    }
+    
+    set salary(salary)
+    {
+        this._salary=salary;
+    }
+    get gender()
+    {
+        return this._gender;
+    }
+    
+    set gender(gender)
+    {
+        this._gender=gender;
+    }
+    get startDate()
+    {
+        return this._startDate;
+    }
+    
+    set startDate(startDate)
+    {
+        this._startDate=startDate;
+    }
+
 
     toString()
     {
