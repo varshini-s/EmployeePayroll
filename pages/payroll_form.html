@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/payroll_form.css">
+    <script defer src="../js/payroll_form.js"></script>
 
 
 </head>
@@ -23,7 +24,7 @@
 
     </header>
     <div class="form-content">
-        <form class="form" action="#" onsubmit="save();return false">
+        <form class="form" action="#" onsubmit="save(event);return false">
             <div class="form-head">Employee payroll form</div>
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
@@ -90,15 +91,15 @@
                 <label class="label text" for="startDate">Start Date</label>
                 <div>
                     <select id="day" name="Day">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
@@ -124,20 +125,21 @@
 
                     </select>
                     <select id="month" name="Month">
-                        <option value="Jan">January</option>
-                        <option value="Feb">February</option>
-                        <option value="March">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
-                        <option value="July">July</option>
-                        <option value="Aug">August</option>
-                        <option value="Sept">September</option>
-                        <option value="Oct">October</option>
-                        <option value="Nov">November</option>
-                        <option value="Dec">December</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
                     </select>
                     <select id="year" name="Year">
+                        <option value="2021">2021</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -150,7 +152,7 @@
             </div>
             <div class="row-content">
                 <label class="label text" for="notes">Notes</label>
-                <textarea id="notes" class="input" name="Notes" placeholder=""style="height:100px"></textarea>
+                <textarea id="notes" class="input" name="Notes" placeholder="" style="height:100px"></textarea>
 
             </div>
             <div class="buttonParent">
@@ -161,7 +163,10 @@
                 </div>
             </div>
         </form>
+
     </div>
+    <script src="../js/listener.js"></script>
+
 </body>
 
 </html>
