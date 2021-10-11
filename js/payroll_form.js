@@ -23,7 +23,19 @@ class EmployeePayrollData
         return this._name;
     }
 
+    set name(name) 
+    {
+        if (NAME_PATTERN.test(name)) 
+        {
+            this._name = name;
+        }
+        else 
+        {
+            alert("Name is incorrect")
+            throw "Name is Incorrect";
 
+        }
+    }
 
     get profile() 
     {
@@ -70,7 +82,36 @@ class EmployeePayrollData
         return this._startDate;
     }
 
-    
+    set startDate(startDate) 
+    {
+        if (DATE_PATTERN.test(startDate)) 
+        {
+            startDate = new Date(startDate)
+            var now = new Date();
+            var dateBefore30Days = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+            var start = dateBefore30Days
+            var end = now;
+
+            if (!(startDate > now)) 
+            {
+                if (startDate > start && startDate < end) 
+                {
+                    this._startDate = startDate;
+                }
+
+                else 
+                {
+                    alert("date invalid")
+                    throw "date cannot be greater than today";
+                }
+            }
+            else 
+            {
+                throw "date format is invalid"
+            }
+
+        }
+    }
 
     get notes() 
     {
