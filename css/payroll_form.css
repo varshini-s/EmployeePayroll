@@ -76,3 +76,23 @@ body
     padding-bottom: 20px;
 }
 
+.row-content
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: center;
+    border: 0px solid green;
+}
+
+.label
+{
+    min-width: 140px;
+}
+
+label
+{
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
