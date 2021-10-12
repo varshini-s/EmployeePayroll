@@ -1,20 +1,21 @@
-const NAME_PATTERN = RegExp('^[A-Z]{1}[a-z]{3,}$');
+const NAME_PATTERN = RegExp('^[A-Z]{1}[a-z]{2,}$');
 const DATE_PATTERN = RegExp('^\\d{4}[/](0[1-9]|1[0-2])[/](0[1-9]|[12][0-9]|3[01])$');
 
 
 class EmployeePayrollData 
 {
 
-    constructor(...params) {
+    constructor(...params) 
+    {
         this.name = params[0];
-        this.profile = params[1];
+        this.profilePic = params[1];
         this.gender = params[2];
         this.department = params[3];
         this.salary = params[4];
         this.startDate = params[5];
         this.notes = params[6];
 
-}
+    }
     //getter and setters
 
 
@@ -37,13 +38,13 @@ class EmployeePayrollData
         }
     }
 
-    get profile() 
+    get profilePic() 
     {
-        return this._profile;
+        return this._profilePic;
     }
-    set profile(profile) 
+    set profilePic(profilePic) 
     {
-        this._profile = profile;
+        this._profilePic = profilePic;
 
     } get gender() 
     {
@@ -128,7 +129,7 @@ class EmployeePayrollData
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const employeeDate = this.startDate == undefined ? "undefined" :
             this.startDate.toLocaleDateString("en-us", options);
-        return "name='" + this.name + ",profile= " + this.profile + ",gender= " + this.gender + ",department= " + this.department +
+        return "name='" + this.name + ",profile= " + this.profilePic + ",gender= " + this.gender + ",department= " + this.department +
             ",salary=" + this.salary + ",startDate= " + employeeDate + ",notes= " + this.notes;
     }
 }
