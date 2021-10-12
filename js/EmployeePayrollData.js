@@ -70,6 +70,9 @@ class EmployeePayrollData {
                 throw "date invalid";
             }
         }
+        else {
+            throw "date cannot be future date";
+        }
 
 
     }
@@ -91,47 +94,3 @@ class EmployeePayrollData {
     }
 }
 
-
-
-function save(event) {
-    var name = document.getElementById("name").value;
-
-    var department = []
-    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-
-    for (var i = 0; i < checkboxes.length; i++) {
-        department.push(checkboxes[i].value)
-    }
-    var gender = document.querySelector('input[name="gender"]:checked').value;
-    var profile = document.querySelector('input[name="profile"]:checked').value;
-
-    var salary = document.getElementById("salary").value;
-
-    var daySelected = document.getElementById("day");
-    var day = daySelected.options[daySelected.selectedIndex].value;
-    var monthSelected = document.getElementById("month");
-    var month = monthSelected.options[monthSelected.selectedIndex].value;
-    var yearSelected = document.getElementById("year");
-    var year = yearSelected.options[yearSelected.selectedIndex].value;
-
-    var notes = document.getElementById("notes").value;
-
-    var dateString = year + "/" + month + "/" + day;
-
-
-    try {
-
-        let employeePayrollData = new EmployeePayrollData();
-        employeePayrollData.name = name;
-        employeePayrollData.profilePic = profile;
-        employeePayrollData.gender = gender;
-        employeePayrollData.department = department;
-        employeePayrollData.salary = salary;
-        employeePayrollData.startDate = dateString;
-        employeePayrollData.notes = notes
-        alert(employeePayrollData.toString())
-    }
-    catch (e) {
-        console.error(e);
-    }
-}
