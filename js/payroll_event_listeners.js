@@ -76,7 +76,6 @@ function createAndUpdateStorage(employeePayrollData)
         employeePayrollList=[employeePayrollData]
     }
 
-    alert(employeePayrollList.toString());
     localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
 }
 
@@ -99,9 +98,8 @@ employeePayrollData.gender=getSelctedValues('[name=gender]').pop();
 employeePayrollData.department=getSelctedValues('[name=department]');
 employeePayrollData.salary=getInputValueById('#salary');
 employeePayrollData.note=getInputValueById('#notes');
-let date=getInputValueById("#year")+"/"+getInputValueById('#month')+"/"+
-         getInputValueById('#day');
-employeePayrollData.startDate=date;
+let date = getInputValueById("#year") + "-" + getInputValueById("#month") + "-" + getInputValueById("#day");
+employeePayrollData.startDate = new Date(Date.parse(date));
 alert(employeePayrollData.toString());
 return employeePayrollData;
 
