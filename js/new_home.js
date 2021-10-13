@@ -6,27 +6,39 @@ const createInnerHtml=()=>{
 
     const headerHTML ="<th></th> <th>Name</th> <th>Gender</th>"+
                      "<th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th>";
+    let innerHtml=`${headerHTML}`
 
-    let empPayrollData=createEmployeePayrollJSON()[1];
-    const innerHtml=`${headerHTML}
- 
-    <tr>
+    let empPayrollList=createEmployeePayrollJSON();
+    for (const empPayrollData of empPayrollList)
+    {
+        innerHtml=`${innerHtml}
+        <tr>
         <td><img class="profile" alt="" src="${empPayrollData._profilePic}"></td>
         <td>${empPayrollData._name}</td>
         <td>${empPayrollData._gender}</td>
-        <td><div class="dept-label">${empPayrollData._department[0]}</div>
-            <div class="dept-label">${empPayrollData._department[1]}</div></td>
+        <td>${getDeptHtml(empPayrollData._department)}</td>
         <td>${empPayrollData._salary}</td>
         <td>${empPayrollData._startDate}</td>
         <td>
-            <img name="$empPayrollData._id}" onclick="remove(this)" alt="delete"
+            <img name="${empPayrollData._id}" onclick="remove(this)" alt="delete"
                     src="../assets/icons/delete-black-18dp.svg">
-            <img name="$empPayrollData._id}" alt="edit" onclick="update(this)"
+            <img name="${empPayrollData._id}" alt="edit" onclick="update(this)"
                     src="../assets/icons/create-black-18dp.svg">
         </td>
     </tr>
     `;
+    }
+ 
     document.querySelector('#table-display').innerHTML=innerHtml;
+}
+
+const getDeptHtml=(deptList)=>{
+    let deptHtml='';
+    for (const dept of deptList){
+        deptHtml=`${deptHtml}<div class='dept-label'>${dept}</div>`
+    }
+
+    return deptHtml;
 }
 
 const createEmployeePayrollJSON=()=>{
