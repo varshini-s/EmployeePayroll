@@ -362,3 +362,9 @@ select
     display: flex;
     flex-direction: row;
 }
+
+.name-error
+{
+    width: 100%;
+
+}
