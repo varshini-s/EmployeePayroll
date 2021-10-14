@@ -3,6 +3,16 @@ const NAME_PATTERN = RegExp('^[A-Z]{1}[a-z]{2,}$');
 
 class EmployeePayrollData {
 
+    get id()
+    {
+        return this._id;
+    }
+
+    set id(id)
+    {
+        this._id=id;
+    }
+
     get name() {
         return this._name;
     }
@@ -55,24 +65,12 @@ class EmployeePayrollData {
 
     set startDate(startDate) {
 
-        startDate = new Date(startDate)
-        var now = new Date();
-        var dateBefore30Days = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-        var start = dateBefore30Days
-        var end = now;
-
-        if (!(startDate > now)) {
-            if (startDate > start && startDate < end) {
-                this._startDate = startDate;
-            }
-
-            else {
-                throw "date invalid";
-            }
-        }
-        else {
-            throw "date cannot be future date";
-        }
+        let now=new Date();
+        if(startDate>now) throw 'Start date is a future Date!';
+        var diff=Math.abs(now.getTime()-startDate.getTime());
+        if(diff/(1000*60*80*24)>30)
+            throw 'Start Date is beyond 30 Days!';
+        this._startDate=startDate;
 
 
     }
@@ -89,7 +87,7 @@ class EmployeePayrollData {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const employeeDate = this.startDate == undefined ? "undefined" :
             this.startDate.toLocaleDateString("en-us", options);
-        return "name='" + this.name + ",profile= " + this.profilePic + ",gender= " + this.gender + ",department= " + this.department +
+        return "id= "+this.id+"name='" + this.name + ",profile= " + this.profilePic + ",gender= " + this.gender + ",department= " + this.department +
             ",salary=" + this.salary + ",startDate= " + employeeDate + ",notes= " + this.notes;
     }
 }
