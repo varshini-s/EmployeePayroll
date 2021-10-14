@@ -1,3 +1,4 @@
+var empId;
 window.addEventListener('DOMContentLoaded', (event) => {
 
     const name = document.querySelector('#name');
@@ -25,28 +26,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
 
-
-  
     const startDate=document.querySelector(".date-selector");
     const dateError = document.querySelector('.date-error');
 
-    startDate.addEventListener('input', function () {
-        const day = document.querySelector('#day').value;
-        const month = document.querySelector('#month').value;
-        const year = document.querySelector('#year').value;
     
-        const dateString = year + "/" + month + "/" + day;
+        startDate.addEventListener('input', function () 
+    {
+        if(getInputValueById("#year")==""||getInputValueById("#month")==""||getInputValueById("#day")=="")
+        {
+            dateError.textContent = "Date Invalid";
+
+        }
+        else
+        {
+
+            let date = getInputValueById("#year") + "-" + getInputValueById("#month") + "-" + getInputValueById("#day");
       
         try {
-            (new EmployeePayrollData()).startDate = dateString;
+            (new EmployeePayrollData()).startDate = new Date(Date.parse(date));
             dateError.textContent = "";
 
         }
         catch (e) {
             dateError.textContent = e;
         }
+        }
+
+        
     });
+    
+    
 });
+
 
 const save=()=>{
 
@@ -81,6 +92,17 @@ function createAndUpdateStorage(employeePayrollData)
 
 const createEmployeePayroll=()=>{
 
+    let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    
+    if(employeePayrollList==null)
+    {
+        empId=0;
+    }
+    else
+    {
+        empId=employeePayrollList.length;
+    }
+
 let employeePayrollData = new EmployeePayrollData();
 
 try
@@ -93,6 +115,7 @@ catch(e)
     throw e;
 }
 
+employeePayrollData.id=empId;
 employeePayrollData.profilePic= getSelctedValues('[name=profile]').pop();
 employeePayrollData.gender=getSelctedValues('[name=gender]').pop();
 employeePayrollData.department=getSelctedValues('[name=department]');
