@@ -16,11 +16,10 @@ const createInnerHtml = () => {
 
     const headerHTML = "<th></th><th>Name</th> <th>Gender</th>" +
         "<th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th>";
-    if (empPayrollList.length == 0) return;
+    if (empPayrollList.length == 0) document.querySelector('#table-display').innerHTML = "";
     let innerHtml = `${headerHTML}`;
 
     for (const empPayrollData of empPayrollList) {
-        let startDate=getDateInGivenFormat(new Date(empPayrollData._startDate))
 
         innerHtml = `${innerHtml}
         
@@ -32,11 +31,11 @@ const createInnerHtml = () => {
         <td>&#8377
         ${empPayrollData._salary}
         </td>
-        <td>${startDate}</td>
+        <td>${stringifyDate(empPayrollData._startDate)}</td>
         <td>
-            <img name="${empPayrollData._id}" onclick="remove(this)" alt="delete"
+            <img id="${empPayrollData._id}" onclick="remove(this)" alt="delete"
                     src="../assets/icons/delete-black-18dp.svg">
-            <img name="${empPayrollData._id}" alt="edit" onclick="update(this)"
+            <img id="${empPayrollData._id}" alt="edit" onclick="update(this)"
                     src="../assets/icons/create-black-18dp.svg">
         </td>
     </tr>
@@ -47,42 +46,6 @@ const createInnerHtml = () => {
 }
 
 
-const getDateInGivenFormat =(date)=>{
-
-    let day=date.getDate();
-    let year=date.getFullYear();
-    let month = "";
-
-    switch(date.getMonth()+1)
-    {
-        case 1: month = "Jan";
-            break;
-        case 2: month = "Feb";
-            break;
-        case 3: month = "Mar";
-            break;
-        case 4: month = "Apr";
-            break;
-        case 5: month = "May";
-            break;
-        case 6: month = "Jun"; 
-            break;
-        case 7: month = "Jul";
-            break;
-        case 8: month = "Aug";
-            break;
-        case 9: month = "Sep";
-            break;
-        case 10: month = "Oct";
-            break;
-        case 11: month = "Nov";
-            break;
-        case 12: month = "Dec";
-            break;
-    }
-    return day+" "+month+" "+year
-}
-
 const getDeptHtml = (deptList) => {
     let deptHtml = '';
     for (const dept of deptList) {
@@ -90,5 +53,18 @@ const getDeptHtml = (deptList) => {
     }
 
     return deptHtml;
+}
+
+const remove = (node) => {
+    let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
+
+    if (!empPayrollData) return;
+    const index = empPayrollList
+        .map(empData => empData._id)
+        .indexOf(empPayrollData._id);
+    empPayrollList.splice(index, 1);
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
+    createInnerHtml();
 }
 
