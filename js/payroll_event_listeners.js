@@ -94,12 +94,31 @@ const setEmployeePayrollObject=()=>
     employeePayrollObj._startDate = date;
     
 }
+
+
+function createAndUpdateStorage()
     {
-        employeePayrollList.push(employeePayrollData);
+    let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    
+
+    if (employeePayrollList) {
+        let employeePayrollData = employeePayrollList
+            .find(empData => empData._id == employeePayrollObj._id);
+
+        if (!employeePayrollData) {
+            employeePayrollList.push(createEmployeePayrollData());
     }
+        else {
+            const index = employeePayrollList
+                .map(empData => empData._id)
+                .indexOf(employeePayrollData._id);
+            employeePayrollList.splice(index, 1, createEmployeePayrollData(employeePayrollData._id))
+        }
+    }
+
     else
     {
-        employeePayrollList=[employeePayrollData]
+        employeePayrollList=[createEmployeePayrollData()]
     }
 
     localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
