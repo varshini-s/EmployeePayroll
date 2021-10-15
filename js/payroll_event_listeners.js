@@ -162,6 +162,14 @@ const setEmployeePayrollData=(employeePayrollData)=>{
     alert(employeePayrollData.toString());
 }
 
+const createNewEmployeeId=()=>{
+
+    let empID = localStorage.getItem("EmployeeID");
+    empID=!empID? 1 :(parseInt(empID)+1).toString();
+    localStorage.setItem("EmployeeID",empID);
+    return empID;
+}
+
 const createEmployeePayroll=()=>{
 
     let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayrollList"));
