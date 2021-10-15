@@ -3,6 +3,12 @@ let isUpdate = false;
 let employeePayrollObj = {};
 window.addEventListener('DOMContentLoaded', (event) => {
 
+    const form=document.querySelector('.form');
+    form.addEventListener('input',function(){
+        document.getElementById("submitButton").disabled = false;
+
+    })
+
     const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
     name.addEventListener('input', function () {
