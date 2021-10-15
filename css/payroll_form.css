@@ -176,13 +176,23 @@ select
 .submitButton
 {
     margin-right: 30px;
+    background-color: forestgreen;
+    color:  #E2E2E2 ;
 }
+
+.resetButton
+{
+    background-color: #1a53ff    ;
+    color:  #E2E2E2 ;
+}
+
 .cancelButton
 {
     text-decoration: none;
+    background-color: red;
+    color:  #E2E2E2 ;
     text-align: center;
 }
-
 .gender
 {
     display: flex;
