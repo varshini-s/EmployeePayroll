@@ -63,12 +63,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-const save=()=>{
+const save=(event)=>{
+
+    event.preventDefault();
+    event.stopPropagation();
 
     try {
-
-        let employeePayrollData= createEmployeePayroll();
-        createAndUpdateStorage(employeePayrollData);
+        setEmployeePayrollObject();
+        createAndUpdateStorage();
+        resetForm();
+        window.location.replace(site_properties.home_page);
         
     }
      catch (e) 
