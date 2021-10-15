@@ -82,11 +82,18 @@ const save=(event)=>{
     }
 }
 
-function createAndUpdateStorage(employeePayrollData)
+const setEmployeePayrollObject=()=>
 {
-    let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    employeePayrollObj._name = getInputValueById('#name');
+    employeePayrollObj._profilePic = getSelctedValues('[name=profile]').pop();
+    employeePayrollObj._gender = getSelctedValues('[name=gender]').pop();
+    employeePayrollObj._department = getSelctedValues('[name=department]');
+    employeePayrollObj._salary = getInputValueById('#salary');
+    employeePayrollObj._note = getInputValueById('#notes');
+    let date = getInputValueById("#year") + "-" + getInputValueById("#month") + "-" + getInputValueById("#day");
+    employeePayrollObj._startDate = date;
     
-    if(employeePayrollList!=undefined)
+}
     {
         employeePayrollList.push(employeePayrollData);
     }
