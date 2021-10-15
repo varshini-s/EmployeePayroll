@@ -1,4 +1,6 @@
 var empId;
+let isUpdate=false;
+let employeePayrollObj={};
 window.addEventListener('DOMContentLoaded', (event) => {
 
     const name = document.querySelector('#name');
@@ -54,6 +56,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         
     });
+
+    checkForUpdate();
     
     
 });
@@ -146,6 +150,23 @@ const getInputValueById =(id)=>{
     return value;
 }
 
+const setForm=()=>{
+
+    setValue('#name',employeePayrollObj._name);
+    setSelectedValues('[name=profile]',employeePayrollObj._profilePic);
+    setSelectedValues('[name=gender]',employeePayrollObj._gender);
+    setSelectedValues('[name=department]',employeePayrollObj._department);
+    setValue('#salary',employeePayrollObj.salary);
+    setTextValue('.salary-output',employeePayrollObj._salary);
+    setValue('#notes',employeePayrollObj._note);
+    let date=stringifyDateNumericForm(employeePayrollObj._startDate).split("/");
+    setValue('#day',date[0]);
+    setValue('#month',date[1]);
+    setValue('#year',date[2]);
+
+}
+
+
 const resetForm=()=>{
 
     setValue('#name','');
@@ -153,10 +174,15 @@ const resetForm=()=>{
     unsetSelectedValues('[name=gender]');
     unsetSelectedValues('[name=department]');
     setValue('#salary','');
+
+    const salary = document.querySelector('#salary');
+    const output = document.querySelector('.salary-output');
+    output.textContent = salary.value;
+   
     setValue('#notes','');
-    setValue('#day','1');
-    setValue('#month','January');
-    setValue('#year','2020');
+    setSelectedIndex('#day',0);
+    setSelectedIndex('#month',0);
+    setSelectedIndex('#year',0);
     setErrorField('.text-error',"");
     setErrorField('.date-error',"");
 }
@@ -178,8 +204,38 @@ const setValue=(id,value)=>{
     element.value=value;
 }
 
+const setSelectedIndex =(id,index)=>{
+    const element=document.querySelector(id);
+    element.selectedIndex=index
+}
+
+const setSelectedValues =(propertyValue,value)=>{
+
+    let allItems=document.querySelectorAll(propertyValue);
+    allItems.forEach(item=>{
+        if(Array.isArray(value))
+        {
+            if(value.includes(item.value))
+            {
+                item.checked=true;
+            }
+        }
+        else if(item.value===value)
+            item.checked=true;
+
+    });
+
+}
+
 const setErrorField=(id,value)=>{
 
     const element=document.querySelector(id);
     element.textContent=value
+}
+const checkForUpdate=()=>{
+    const employeePayrollJson=localStorage.getItem('editEmp');
+    isUpdate=employeePayrollJson?true:false;
+    if(!isUpdate) return;
+    employeePayrollObj=JSON.parse(employeePayrollJson);
+    setForm();
 }
