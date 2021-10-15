@@ -1,7 +1,8 @@
 const NAME_PATTERN = RegExp('^([A-Z]{1}[a-z]{2,})( [A-Z]{1}[a-z]{2,})*$');
 
 
-class EmployeePayrollData {
+class EmployeePayrollData 
+{
 
     get id()
     {
@@ -13,57 +14,71 @@ class EmployeePayrollData {
         this._id=id;
     }
 
-    get name() {
+    get name() 
+    {
         return this._name;
     }
 
-    set name(name) {
-        if (NAME_PATTERN.test(name)) {
+    set name(name) 
+    {
+        if (NAME_PATTERN.test(name)) 
+        {
             this._name = name;
         }
-        else {
+        else 
+        {
             throw "Name is Incorrect";
 
         }
     }
 
-    get profilePic() {
+    get profilePic() 
+    {
         return this._profilePic;
     }
-    set profilePic(profilePic) {
+    set profilePic(profilePic) 
+    {
         this._profilePic = profilePic;
 
-    } get gender() {
+    } get gender() 
+    {
         return this._gender;
     }
 
-    set gender(gender) {
+    set gender(gender) 
+    {
         this._gender = gender;
 
     }
-    get department() {
+    get department() 
+    {
         return this._department;
     }
 
-    set department(department) {
+    set department(department) 
+    {
         this._department = department;
 
     }
 
-    get salary() {
+    get salary() 
+    {
         return this._salary;
     }
 
-    set salary(salary) {
+    set salary(salary) 
+    {
         this._salary = salary;
 
     }
 
-    get startDate() {
+    get startDate() 
+    {
         return this._startDate;
     }
 
-    set startDate(startDate) {
+    set startDate(startDate) 
+    {
 
         let now=new Date();
         if(startDate>now) throw 'Start date is a future Date!';
@@ -75,15 +90,18 @@ class EmployeePayrollData {
 
     }
 
-    get notes() {
+    get notes() 
+    {
         return this._notes;
     }
 
-    set notes(notes) {
+    set notes(notes) 
+    {
         this._notes = notes;
 
     }
-    toString() {
+    toString() 
+    {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const employeeDate = this.startDate == undefined ? "undefined" :
             this.startDate.toLocaleDateString("en-us", options);
