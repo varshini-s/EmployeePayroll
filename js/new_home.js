@@ -64,6 +64,11 @@ const remove = (node) => {
         .indexOf(empPayrollData._id);
     empPayrollList.splice(index, 1);
     localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
+    if(empPayrollList.length==0)
+    {
+        localStorage.setItem("EmployeeID",0);
+
+    }
     document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
 }
