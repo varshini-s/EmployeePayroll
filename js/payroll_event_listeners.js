@@ -147,24 +147,24 @@ function createAndUpdateStorage()
     if (employeePayrollList) 
     {
         let employeePayrollData = employeePayrollList
-            .find(empData => empData._id == employeePayrollObj._id);
+            .find(empData => empData.id == employeePayrollObj.id);
 
         if (!employeePayrollData) 
         {
-            employeePayrollList.push(createEmployeePayrollData());
+            employeePayrollList.push(employeePayrollObj);
         }
         else 
         {
             const index = employeePayrollList
-                .map(empData => empData._id)
-                .indexOf(employeePayrollData._id);
-            employeePayrollList.splice(index, 1, createEmployeePayrollData(employeePayrollData._id))
+                .map(empData => empData.id)
+                .indexOf(employeePayrollData.id);
+            employeePayrollList.splice(index, 1, employeePayrollObj)
         }
     }
 
     else 
     {
-        employeePayrollList = [createEmployeePayrollData()]
+        employeePayrollList = [employeePayrollObj]
     }
 
     localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
