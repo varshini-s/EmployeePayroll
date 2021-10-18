@@ -1,0 +1,45 @@
+{
+  "EmployeePayrollDB": [
+    {
+      "id": 1,
+      "_name": "Lisa Kudrov",
+      "_profilePic": "../assets/profile-images/Ellipse -3.png",
+      "_gender": "Female",
+      "_department": [
+        "HR",
+        "Sales",
+        "Finance"
+      ],
+      "_salary": "400000",
+      "note": "",
+      "_startDate": "2021-09-18T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "_name": "Emma Green Geller",
+      "_profilePic": "../assets/profile-images/Ellipse -1.png",
+      "_gender": "Female",
+      "_department": [
+        "HR",
+        "Sales",
+        "Finance"
+      ],
+      "_salary": "400000",
+      "note": "undefined",
+      "_startDate": "2021-09-16T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "_name": "Michael scofield",
+      "_profilePic": "../assets/profile-images/Ellipse -7.png",
+      "_gender": "Male",
+      "_department": [
+        "HR",
+        "Sales"
+      ],
+      "_salary": "400000",
+      "note": "undefined",
+      "_startDate": "2021-09-19T00:00:00.000Z"
+    }
+  ]
+}
