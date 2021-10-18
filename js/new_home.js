@@ -13,9 +13,36 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 const getEmployeePayrollDataFromStorage = () => {
 
-    return localStorage.getItem('EmployeePayrollList') ?
+    empPayrollList= localStorage.getItem('EmployeePayrollList') ?
         JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+
+        processEmployeePayrollDataResponse();
 }
+
+
+const  processEmployeePayrollDataResponse=()=>{
+
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
+    createInnerHtml();
+    localStorage.removeItem('editEmp');
+}
+
+const getEmployeePayrollDataFromServer=()=>{
+
+    makeServiceCall("GET",site_properties.server_url,true)
+    .then(responseText=>{
+        empPayrollList=JSON.parse(responseText);
+        processEmployeePayrollDataResponse();
+    })
+    .catch(error=>{
+        console.log("GET Error status: "+JSON.stringify(error));
+        empPayrollList=[];
+        processEmployeePayrollDataResponse();
+    
+    
+    });
+}
+
 
 const createInnerHtml = () => {
 
