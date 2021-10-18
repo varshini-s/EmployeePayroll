@@ -76,9 +76,18 @@ const save = (event) => {
     try 
     {
         setEmployeePayrollObject();
-        createAndUpdateStorage();
-        resetForm();
-        window.location.replace(site_properties.home_page);
+        if(site_properties.use_local_storage.match("true"))
+        {
+            createAndUpdateStorage();
+            resetForm();
+            window.location.replace(site_properties.home_page);
+
+        }
+        else
+        {
+            createOrUpdateEmployeePayroll();
+        }
+        
 
     }
     catch (e) 
