@@ -61,6 +61,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     });
 
+    document.querySelector('.cancelButton').href=site_properties.home_page;
     checkForUpdate();
 
 
