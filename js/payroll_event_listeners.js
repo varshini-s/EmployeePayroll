@@ -1,4 +1,4 @@
-var empId;
+
 let isUpdate = false;
 let employeePayrollObj = {};
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -16,8 +16,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
             textError.textContent = "";
             return;
         }
-        try {
-            (new EmployeePayrollData()).name = name.value;
+        try 
+        {
+            checkName(name.value);
             textError.textContent = "";
 
         }
@@ -48,7 +49,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let date = getInputValueById("#year") + "-" + getInputValueById("#month") + "-" + getInputValueById("#day");
 
             try {
-                (new EmployeePayrollData()).startDate = new Date(Date.parse(date));
+                checkStartDate(new Date(Date.parse(date)));
                 dateError.textContent = "";
 
             }
