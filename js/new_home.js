@@ -118,7 +118,6 @@ const remove = (node) => {
         localStorage.setItem("EmployeeID",0);
 
     }
-    // document.querySelector(".emp-count").textContent = empPayrollList.length;
 }
 
 const update=(node)=>{
