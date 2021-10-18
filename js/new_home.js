@@ -1,9 +1,14 @@
 var empPayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
-    empPayrollList = getEmployeePayrollDataFromStorage();
-    document.querySelector(".emp-count").textContent = empPayrollList.length;
-    createInnerHtml();
-    localStorage.removeItem('editEmp');
+
+    if(site_properties.use_local_storage.match("true"))
+    {
+        getEmployeePayrollDataFromStorage();
+    }
+    else
+    {
+        getEmployeePayrollDataFromServer();
+    }
 });
 
 const getEmployeePayrollDataFromStorage = () => {
