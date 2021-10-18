@@ -4,15 +4,7 @@ const NAME_PATTERN = RegExp('^([A-Z]{1}[a-z]{2,})( [A-Z]{1}[a-z]{2,})*$');
 class EmployeePayrollData 
 {
 
-    get id()
-    {
-        return this._id;
-    }
-
-    set id(id)
-    {
-        this._id=id;
-    }
+    id;
 
     get name() 
     {
